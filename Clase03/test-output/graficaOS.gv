@@ -1,0 +1,1 @@
+digraph G {n0 [label="Messi"];n1 [label="CR7"];n0 -> n1;n2 [label="ViniJR"];n1 -> n2;}
