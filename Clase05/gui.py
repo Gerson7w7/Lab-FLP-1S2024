@@ -1,28 +1,48 @@
-# interfaz hecha con tkinter
 from tkinter import *
 from tkinter import ttk
 
-def funcion_mostrar():
-    entrada = text_area.get("1.0", END);
-    consola.insert("end-1c", entrada);
+raiz = Tk()
 
-raiz = Tk();
+def funcion_boton():
+    #Obtiene todo el texto del text_area
+    entrada = text_area.get("1.0", "end-1c")
 
-etq = Label(raiz, text="Hola mundo");
-etq.pack();
+    #Insertar al final del text_area que funciona como consola
+    #Se agrega un salto de línea para que no quede en la misma línea el siguiente texto
+    consola.insert("end-1c", entrada + "\n")
 
-comboboxPaises = ttk.Combobox(state="readonly", values=["Guatemala", "Honduras", "El Salvador", "Nicaragua"]);
-comboboxPaises.place(x=100, y=100); # Posiciona el combobox en la ventana
+def obtener_texto_combobox():
+    seleccionado = combobox_t.get()
+    print(seleccionado)
 
-boton = Button(raiz, text="Mostrar", command=funcion_mostrar());
-boton.place(x=400, y=100); # Posiciona el boton en la ventana
 
-text_area = Text(raiz, width=20, height=10);
-text_area.place(x=100, y=150); # Posiciona el text_area en la ventana
+etq = Label(raiz, text="Mi primera etiqueta")
+etq.pack() #Se coloca automáticamente en centro de la pantalla
 
-consola = Text(raiz, width=20, height=10);
-consola.place(x=500, y=150); # Posiciona el text_area en la ventana
+#etq.grid(column=0, row=0)
 
-raiz.title("Ventana de pruebas");
-raiz.geometry("900x500");
-raiz.mainloop();
+combobox_t = ttk.Combobox(state="readonly", values=["Opción 1", "Opción 2", "Opción 3"])
+combobox_t.place(x=100,y=100) #Posicionar en coordenada específica
+
+boton = Button(raiz, text="Mostrar opción en consola python", command=obtener_texto_combobox)
+boton.place(x=400, y=100)
+
+#Área para escribir código
+text_area = Text(raiz, height=15, width=40)
+text_area.place(x=100, y=150)
+
+#Igual al anterior pero puede ser utilizado como consola para mostrar resultados
+consola = Text(raiz, height=15, width=40)
+consola.place(x=500, y=150)
+
+boton = Button(raiz, text="Mostrar texto en 'consola'", command=funcion_boton)
+boton.place(x=400, y=450)
+
+#Tamaño de la ventana - ancho x alto
+raiz.geometry("900x500")
+#Título de la ventana
+raiz.title("LFP")
+
+#raiz.minsize(width=900, height=500)
+#raiz.maxsize(width=1920, height=1080)
+raiz.mainloop()
