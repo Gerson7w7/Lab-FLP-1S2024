@@ -1,0 +1,54 @@
+ARCHIVO FUENTE:
+Claves = [
+	"productos", "precio", "cantidad"
+	]
+
+Registros = [
+	{"manzana", 2.5, 15},
+	{"sandia", 5,10}
+	]
+
+imprimir("hola mundo");
+conteo();
+promedio("cantidad");
+
+GRAMATICA:
+TERMINALES: 
+TK_CLAVES, TK_IGUAL, TK_CORCHETE_A, TK_CORCHETE_C, TK_CADENA, TK_COMA, TK_REGISTROS, TK_LLAVE_A, TK_LLAVE_C, TK_ENTERO, TK_DECIMAL, TK_IMPRIMIR, TK_PARENTESIS_A, TK_PARENTESIS_C, TK_PUNTO_COMA, TK_CONTEO, TK_PROMEDIO
+
+NO TERMINALES:
+inicio, claves, registros, funciones, lista_claves, lista_registros, registro, valores, valor, funcion, parametros, palabra_reservada 
+e = epsilon
+
+inicio -> claves registros funciones
+
+claves -> TK_CLAVES TK_IGUAL TK_CORCHETE_A TK_CADENA lista_claves TK_CORCHETE_C
+
+lista_claves -> TK_COMA TK_CADENA lista_claves
+		| e
+
+registros -> TK_REGISTROS TK_IGUAL TK_CORCHETE_A registro lista_registros TK_CORCHETE_C
+
+lista_registros -> TK_COMA registro lista_registros 
+		| e
+
+registro -> TK_LLAVE_A valores TK_LLAVE_C 
+
+valores -> TK_COMA valor valores
+	| e
+
+valor -> TK_CADENA
+	| TK_ENTERO
+	| TK_DECIMAL
+
+funciones -> funcion funciones
+	| e
+
+funcion -> palabra_reservada TK_PARENTESIS_A parametros TK_PARENTESIS_C TK_PUNTO_COMA
+
+palabra_reservada ->  TK_IMPRIMIR
+ 		    | TK_CONTEO
+		    | TK_PROMEDIO
+
+parametros -> TK_COMA valor valores 
+  	    | e
