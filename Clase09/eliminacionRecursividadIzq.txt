@@ -1,0 +1,24 @@
+A -> A + A
+A -> A * A
+A -> real
+A -> variable
+
+5+5*2 = 15
+quitando ambigueadad:
+E ->  E + T
+    | T
+T ->  T * F
+    | F
+F ->  real 
+    | variable
+
+quitando recursividad por la izquierda:
+E -> T E'
+E' -> + T E'
+    | e
+T -> F T'
+T' -> * F T'
+    | e 
+F -> real 
+    | variable
+

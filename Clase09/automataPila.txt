@@ -1,0 +1,34 @@
+Ejemplo: 
+L = aaabb
+
+PASO 1:
+PILA:Z # Z representa el final de la pila 
+
+PASO 2:
+PILA: Z -> 1 
+cadena = aabb
+
+PASO 3: 
+PILA: Z -> 1 -> 1
+cadena = abb
+
+PASO 4: 
+PILA: Z -> 1 -> 1 -> 1
+cadena = bb
+
+PASO 5: 
+PILA: Z -> 1 -> 1
+cadena = b
+
+PASO 6: 
+PILA: Z -> 1
+cadena = b 
+
+PASO 7: 
+PILA: Z
+cadena = 
+
+PASO 7: 
+PILA: 
+cadena = 
+ESTADO DE ACEPTACIÓN
